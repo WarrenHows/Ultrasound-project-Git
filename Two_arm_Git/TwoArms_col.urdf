@@ -1,0 +1,628 @@
+<?xml version="1.0" ?>
+<robot name="Two arms">
+  <!-- Common base links -->
+  <link name="Link 00">
+    <inertial>
+	  <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="1" iyy="1" izz="1" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="stl2/Link00.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="1.5708 0 1.5708" xyz="0 0 0.4"/>
+      <geometry>
+        <mesh filename="stl2/Link00.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="Link 01">
+    <inertial>
+	  <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="1" iyy="1" izz="1" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="stl2/Link01.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="1.5708 0 1.5708" xyz="0 0 0.4"/>
+      <geometry>
+        <mesh filename="stl2/Link01.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="Joint 00-01" type="prismatic">
+    <origin rpy="0 0 0" xyz="0 0 0.36"/>
+    <axis xyz="0 1 0"/>
+    <parent link="Link 00"/>
+    <child link="Link 01"/>
+    <dynamics damping="0.1"/>
+    <limit lower="-0.5" upper="0.5" effort="100" velocity="1"/>
+  </joint>
+
+  <!-- Left arm -->
+    <link name="Link 02">
+    <inertial>
+	  <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="1" iyy="1" izz="1" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="stl2/Link02.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="1.5708 0 1.5708" xyz="0 0 0.4"/>
+      <geometry>
+        <mesh filename="stl2/Link02.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="Joint 01-02" type="fixed">
+    <origin rpy="1.5708 0 1.5708" xyz="0.1 0 0.04"/>
+    <parent link="Link 01"/>
+    <child link="Link 02"/>
+  </joint>
+
+  <link name="Link 03">
+    <inertial>
+	  <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="1" iyy="1" izz="1" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="stl2/Link03.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="1.5708 0 1.5708" xyz="0 0 0.4"/>
+      <geometry>
+        <mesh filename="stl2/Link03_CH.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="Joint 02-03" type="revolute">
+    <origin rpy="0 0 0.2327" xyz="0 0 0.116"/>
+    <axis xyz="0 0 1"/>
+    <parent link="Link 02"/>
+    <child link="Link 03"/>
+    <dynamics damping="0.1"/>
+    <limit lower="-0.3142" upper="0.7400" effort="100" velocity="1"/>
+  </joint>
+
+  <link name="Link 04">
+    <inertial>
+	  <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="1" iyy="1" izz="1" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="stl2/Link04.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="1.5708 0 1.5708" xyz="0 0 0.4"/>
+      <geometry>
+        <mesh filename="stl2/Link04_CH.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="Joint 03-04" type="revolute">
+    <origin rpy="1.5708 0 -0.2327" xyz="0.155 0 0"/>
+    <axis xyz="0 1 0"/>
+    <parent link="Link 03"/>
+    <child link="Link 04"/>
+    <dynamics damping="0.1"/>
+    <limit lower="-0.7400" upper="0.3142" effort="100" velocity="1"/>
+  </joint>
+
+  <link name="Link 05">
+    <inertial>
+	  <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="1" iyy="1" izz="1" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="stl2/Link05.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="1.5708 0 1.5708" xyz="0 0 0.4"/>
+      <geometry>
+        <mesh filename="stl2/Link05_CH.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="Joint 04-05" type="revolute">
+    <origin rpy="0 0 0.2618" xyz="0.075 0 -0.024"/>
+    <axis xyz="0 0 1"/>
+    <parent link="Link 04"/>
+    <child link="Link 05"/>
+    <dynamics damping="0.1"/>
+    <limit lower="-1.6057" upper="1.1868" effort="100" velocity="1"/>
+  </joint>
+
+  <link name="Link 06">
+    <inertial>
+	  <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="1" iyy="1" izz="1" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="stl2/Link06.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="1.5708 0 1.5708" xyz="0 0 0.4"/>
+      <geometry>
+        <mesh filename="stl2/Link06_CH.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="Joint 05-06" type="revolute">
+    <origin rpy="0 0 -1.1345" xyz="0.180 0 0.024"/>
+    <axis xyz="0 0 1"/>
+    <parent link="Link 05"/>
+    <child link="Link 06"/>
+    <dynamics damping="0.1"/>
+    <limit lower="-2.7925" upper="2.3562" effort="100" velocity="1"/>
+  </joint>
+
+  <link name="Link 07">
+    <inertial>
+	  <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="1" iyy="1" izz="1" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="stl2/Link07.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="1.5708 0 1.5708" xyz="0 0 0.4"/>
+      <geometry>
+        <mesh filename="stl2/Link07_CH.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="Joint 06-07" type="revolute">
+    <origin rpy="1.5708 0 -0.4887" xyz="0.1 0 0.086"/>
+    <axis xyz="0 1 0"/>
+    <parent link="Link 06"/>
+    <child link="Link 07"/>
+    <dynamics damping="0.1"/>
+    <limit lower="-2.9671" upper="3.0194" effort="100" velocity="1"/>
+  </joint>
+
+  <link name="Link 08">
+    <inertial>
+	  <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="1" iyy="1" izz="1" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="stl2/Link08.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="1.5708 0 1.5708" xyz="0 0 0.4"/>
+      <geometry>
+        <mesh filename="stl2/Link08_CH.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="Joint 07-08" type="revolute">
+    <origin rpy="1.5708 0 1.5708" xyz="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <parent link="Link 07"/>
+    <child link="Link 08"/>
+    <dynamics damping="0.1"/>
+    <limit lower="1.4661" upper="3.5779" effort="100" velocity="1"/>
+  </joint>
+
+  <link name="Link 09">
+    <inertial>
+	  <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="1" iyy="1" izz="1" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="stl2/Link09.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="1.5708 0 1.5708" xyz="0 0 0.4"/>
+      <geometry>
+        <mesh filename="stl2/Link09_CH.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="Joint 08-09" type="revolute">
+    <origin rpy="-1.5708 0 0" xyz="0 0 0.1505"/>
+    <axis xyz="0 1 0"/>
+    <parent link="Link 08"/>
+    <child link="Link 09"/>
+    <dynamics damping="0.1"/>
+    <limit lower="-1.5708" upper="1.5010" effort="100" velocity="1"/>
+  </joint>
+
+  <link name="Link 10">
+    <inertial>
+	  <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="1" iyy="1" izz="1" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="stl2/Link10.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="1.5708 0 1.5708" xyz="0 0 0.4"/>
+      <geometry>
+        <mesh filename="stl2/Link10_CH.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="Joint 09-10" type="revolute">
+    <origin rpy="-1.5708 0 -1.5708" xyz="0.035 0 0"/>
+    <axis xyz="0 1 0"/>
+    <parent link="Link 09"/>
+    <child link="Link 10"/>
+    <dynamics damping="0.1"/>
+    <limit lower="-2.4086" upper="-0.6981" effort="100" velocity="1"/>
+  </joint>
+
+  <link name="Link 11">
+    <inertial>
+	  <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="1" iyy="1" izz="1" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="stl2/Link11.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="1.5708 0 1.5708" xyz="0 0 0.4"/>
+      <geometry>
+        <mesh filename="stl2/Link11_CH.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="Joint 10-11" type="revolute">
+    <origin rpy="1.5708 0 -0.2967" xyz="0.0551 0 0.05865"/>
+    <axis xyz="0 1 0"/>
+    <parent link="Link 10"/>
+    <child link="Link 11"/>
+    <dynamics damping="0.1"/>
+    <limit lower="-3.1416" upper="3.1416" effort="100" velocity="1"/>
+  </joint>
+
+  <!-- Right arm -->
+  <link name="Link 13">
+    <inertial>
+	  <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="1" iyy="1" izz="1" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="stl2/Link13.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="1.5708 0 1.5708" xyz="0 0 0.4"/>
+      <geometry>
+        <mesh filename="stl2/Link13.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="Joint 01-13" type="fixed">
+    <origin rpy="1.5708 0 1.5708" xyz="-0.187 0 0.04"/>
+    <parent link="Link 01"/>
+    <child link="Link 13"/>
+  </joint>
+
+  <link name="Link 14">
+    <inertial>
+	  <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="1" iyy="1" izz="1" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="stl2/Link03.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="1.5708 0 1.5708" xyz="0 0 0.4"/>
+      <geometry>
+        <mesh filename="stl2/Link03_CH.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="Joint 13-14" type="revolute">
+    <origin rpy="0 0 0.2327" xyz="0 0 -0.166"/>
+    <axis xyz="0 0 1"/>
+    <parent link="Link 13"/>
+    <child link="Link 14"/>
+    <dynamics damping="0.1"/>
+    <limit lower="-0.3142" upper="0.7435" effort="100" velocity="1"/>
+  </joint>
+
+  <link name="Link 15">
+    <inertial>
+	  <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="1" iyy="1" izz="1" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="stl2/Link04.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="1.5708 0 1.5708" xyz="0 0 0.4"/>
+      <geometry>
+        <mesh filename="stl2/Link04_CH.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="Joint 14-15" type="revolute">
+    <origin rpy="1.5708 0 -0.2327" xyz="0.155 0 0"/>
+    <axis xyz="0 1 0"/>
+    <parent link="Link 14"/>
+    <child link="Link 15"/>
+    <dynamics damping="0.1"/>
+    <limit lower="-0.7435" upper="0.3142" effort="100" velocity="1"/>
+  </joint>
+
+  <link name="Link 16">
+    <inertial>
+	  <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="1" iyy="1" izz="1" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="stl2/Link05.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="1.5708 0 1.5708" xyz="0 0 0.4"/>
+      <geometry>
+        <mesh filename="stl2/Link05_CH.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="Joint 15-16" type="revolute">
+    <origin rpy="0 0 -0.2618" xyz="0.075 0 -0.024"/>
+    <axis xyz="0 0 1"/>
+    <parent link="Link 15"/>
+    <child link="Link 16"/>
+    <dynamics damping="0.1"/>
+    <limit lower="-1.8326" upper="1.0123" effort="100" velocity="1"/>
+  </joint>
+
+  <link name="Link 17">
+    <inertial>
+	  <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="1" iyy="1" izz="1" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="stl2/Link06.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="1.5708 0 1.5708" xyz="0 0 0.4"/>
+      <geometry>
+        <mesh filename="stl2/Link06_CH.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="Joint 16-17" type="revolute">
+    <origin rpy="0 0 1.1345" xyz="0.180 0 0.024"/>
+    <axis xyz="0 0 1"/>
+    <parent link="Link 16"/>
+    <child link="Link 17"/>
+    <dynamics damping="0.1"/>
+    <limit lower="-1.8151" upper="2.7576" effort="100" velocity="1"/>
+  </joint>
+
+  <link name="Link 18">
+    <inertial>
+	  <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="1" iyy="1" izz="1" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="stl2/Link07.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="1.5708 0 1.5708" xyz="0 0 0.4"/>
+      <geometry>
+        <mesh filename="stl2/Link07_CH.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="Joint 17-18" type="revolute">
+    <origin rpy="1.5708 0 0.4887" xyz="0.1 0 0.086"/>
+    <axis xyz="0 1 0"/>
+    <parent link="Link 17"/>
+    <child link="Link 18"/>
+    <dynamics damping="0.1"/>
+    <limit lower="-3.0107" upper="2.9671" effort="100" velocity="1"/>
+  </joint>
+
+  <link name="Link 19">
+    <inertial>
+	  <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="1" iyy="1" izz="1" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="stl2/Link08.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="1.5708 0 1.5708" xyz="0 0 0.4"/>
+      <geometry>
+        <mesh filename="stl2/Link08_CH.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="Joint 18-19" type="revolute">
+    <origin rpy="1.5708 0 1.5708" xyz="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <parent link="Link 18"/>
+    <child link="Link 19"/>
+    <dynamics damping="0.1"/>
+    <limit lower="1.5708" upper="3.5779" effort="100" velocity="1"/>
+  </joint>
+
+  <link name="Link 20">
+    <inertial>
+	  <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="1" iyy="1" izz="1" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="stl2/Link09.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="1.5708 0 1.5708" xyz="0 0 0.4"/>
+      <geometry>
+        <mesh filename="stl2/Link09_CH.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="Joint 19-20" type="revolute">
+    <origin rpy="-1.5708 0 0" xyz="0 0 0.1505"/>
+    <axis xyz="0 1 0"/>
+    <parent link="Link 19"/>
+    <child link="Link 20"/>
+    <dynamics damping="0.1"/>
+    <limit lower="-1.5708" upper="1.5882" effort="100" velocity="1"/>
+  </joint>
+
+  <link name="Link 21">
+    <inertial>
+	  <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="1" iyy="1" izz="1" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="stl2/Link10.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="1.5708 0 1.5708" xyz="0 0 0.4"/>
+      <geometry>
+        <mesh filename="stl2/Link10_CH.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="Joint 20-21" type="revolute">
+    <origin rpy="-1.5708 0 -1.5708" xyz="0.035 0 0"/>
+    <axis xyz="0 1 0"/>
+    <parent link="Link 20"/>
+    <child link="Link 21"/>
+    <dynamics damping="0.1"/>
+    <limit lower="-2.4260" upper="-0.6981" effort="100" velocity="1"/>
+  </joint>
+
+  <link name="Link 22">
+    <inertial>
+	  <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="1" iyy="1" izz="1" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="stl2/Link11.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="1.5708 0 1.5708" xyz="0 0 0.4"/>
+      <geometry>
+        <mesh filename="stl2/Link11_CH.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="Joint 21-22" type="revolute">
+    <origin rpy="1.5708 0 0.2967" xyz="0.0551 0 0.05865"/>
+    <axis xyz="0 1 0"/>
+    <parent link="Link 21"/>
+    <child link="Link 22"/>
+    <dynamics damping="0.1"/>
+    <limit lower="-3.1416" upper="3.1416" effort="100" velocity="1"/>
+  </joint>
+</robot>

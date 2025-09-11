@@ -1,0 +1,35 @@
+<robot name="Tester_Robot">
+    <link name="link05">
+        <inertial>
+          <mass value="0"/>
+          <origin rpy="0 0 0" xyz="180 0 -24"/>
+          <inertia ixx="0.00381666666667" ixy="0" ixz="0" iyy="0.0036" iyz="0" izz="0.00381666666667"/>
+         </inertial>
+         <visual>
+           <origin rpy="0 0 0" xyz="0 0 0"/>
+           <geometry>
+             <mesh filename="link05.stl"/>
+           </geometry>
+         </visual>
+        </link>
+        <joint name="joint" type="revolute">
+          <origin rpy="1.5707963267948966 -0.0 0.0" xyz="0 0 86"/>
+          <axis xyz="0 0 1"/>
+          <limit effort="204" lower="-2.96705972839" upper="2.96705972839" velocity="1.91986217719"/>
+          <dynamics damping="0.1"/>
+          <parent link="link05"/>
+          <child link="link06"/>
+        </joint> 
+      
+      <link name="link06">
+          <intertial>
+           <mass value="0"/>
+           <origin rpy="1.5707963267948966 0.0 0.0" xyz="0 0 0.055"/>
+           <inertia ixx="0.00381666666667" ixy="0" ixz="0" iyy="0.0036" iyz="0" izz="0.003816666667"/>
+          </inertial>
+          <visual>
+           <origin rpy="0 0 0" xyz="0 0 0"/>
+           <geometry>
+            <mesh filename="link06.stl"/>
+           </visual>
+        </link>

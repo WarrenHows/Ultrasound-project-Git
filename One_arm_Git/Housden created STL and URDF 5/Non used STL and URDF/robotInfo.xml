@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Robots>
+  <Robot version="1.0">
+    <Motors>
+      <motorArduinoId>7543931333735171D1E2 75439313337351816191 75430333437351A01041</motorArduinoId>
+      <nMotors>7</nMotors>
+      <stepsPerDegree>1.0 1.0 1.0   1.0  1.0  1.0 1.0</stepsPerDegree>
+      <!-- Motor zero relative to kinematics zero, in degrees or mm -->
+      <homingPosition>0.0 0.0 0.0 -90.0 90.0 35.0 0.0</homingPosition>
+      <homingSensor>    0   0   0     0    0    0   0</homingSensor>
+      <homingSequence>  0   0   0     0    0    0   0</homingSequence>
+    </Motors>
+    <!-- Joint 3 is not motorised -->
+    <jointToPort>0 1 2 -1 3 4 5 6</jointToPort>
+    <portToJoint>0 1 2 4 5 6 7</portToJoint>
+    <Kinematics>
+      <nProbes>1</nProbes>
+      <nJoints>8</nJoints>
+      <!-- Angles in degrees, distances in mm -->
+      <!-- Joint 4 does not move actively, but is modelled here to allow different manual settings -->
+      <jointNeutralPosition>0.0    0.0    0.0 90.0  -90.0   90.0 35.0   0.0</jointNeutralPosition>
+      <jointOffsetMin>   -300.0  -80.0 -200.0 90.0 -180.0  -10.0 35.0 -95.0</jointOffsetMin>
+      <jointOffsetMax>    300.0   80.0  200.0 90.0  -45.0  190.0 56.0  95.0</jointOffsetMax>
+      <dependentJoint>        0      0      0    0      0      0    0     0</dependentJoint>
+      <DHParameters section="endEffector">
+        <!-- These are only for the 5 end effector joints -->
+        <nSectionJoints>5</nSectionJoints>
+        <alphaAngle>-90.0 -90.0  90.0  0.0 90.0</alphaAngle>
+        <aDist>       0.0  15.0   0.0 62.0  0.0</aDist>
+        <dDist>       0.0   0.0 133.0  0.0 50.0</dDist>
+        <thetaAngle>  0.0   0.0   0.0 90.0  0.0</thetaAngle>
+        <linearJoint>   0     0     0    1    0</linearJoint>
+        <baseAdjustParams>0.0 0.0 0.0 180.0 0.0 90.0</baseAdjustParams>
+      </DHParameters>
+    </Kinematics>
+    <ScanningBed>
+      <bedSize>630.0 1850.0 50.0</bedSize>
+      <bedPosition>195.0 0.0 -300.0</bedPosition>
+    </ScanningBed>
+  </Robot>
+  <Robot version="2.2">
+    <Sensors>
+      <sensorArduinoId>7543331363935140B061</sensorArduinoId>
+      <nTotalRawValues>12</nTotalRawValues>  <!-- Force and distance sensors -->
+      <SensorLocation location="Probe face" type="force">
+        <rawValueListIdx>0</rawValueListIdx>
+        <nRawValues>10</nRawValues>
+        <rawValueScale>0.00488759</rawValueScale>  <!-- 5V / 1023 -->
+        <rawValueMin>0</rawValueMin>
+        <rawValueMax>1023</rawValueMax>
+        <componentNames>Axial Lat. El.</componentNames>
+        <componentWeights dir="Axial">0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.054964321 0.081726295</componentWeights>
+        <componentWeights dir="Lat."> 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0         0.0</componentWeights>
+        <componentWeights dir="El.">  0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0         0.0</componentWeights>
+        <offsets>0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0</offsets>
+      </SensorLocation>
+      <SensorLocation location="Probe face" type="distance">
+        <rawValueListIdx>10</rawValueListIdx>
+        <nRawValues>2</nRawValues>
+        <rawValueScale>1.0</rawValueScale>
+        <rawValueMin>0</rawValueMin>
+        <rawValueMax>255</rawValueMax>
+        <componentNames>Axial</componentNames>
+        <!-- <componentWeights dir="Axial">0.5 0.5</componentWeights> -->
+        <componentWeights dir="Axial">1.0 0.0</componentWeights>
+        <!-- Very approximate -->
+        <offsets>60.0 50.0</offsets>
+      </SensorLocation>
+    </Sensors>
+    <Motors>
+      <motorArduinoId>2704100</motorArduinoId>
+      <nMotors>8</nMotors>
+      <stepsPerRevolution>200.0 200.0 200.0   20.0   20.0  20.0   20.0  20.0</stepsPerRevolution>
+      <microstepping>       8.0   8.0   8.0    8.0    8.0   8.0    8.0   8.0</microstepping>
+      <internalGearRatio>  27.0  14.0  13.73 232.0  232.0 232.0  232.0 232.0</internalGearRatio> <!-- Values may not be perfectly accurate -->
+      <externalGearRatio>   3.47 62.0  96.0    6.32   6.0   6.67   7.9   7.2</externalGearRatio> <!-- 52/15 62/1 96/1 120/19 120/20 120/18 158/20 144/20 -->
+      <!-- Motor zero relative to kinematics zero, in degrees or mm -->
+      <homingPosition>      0.0 -90.0  13.19  90.0   90.0   0.0  -90.0  90.0</homingPosition>
+      <homingSensor>          0     0     0      0      0     0      0     0</homingSensor>
+      <homingSequence>        0     0     0      0      0     0      0     0</homingSequence>
+    </Motors>
+    <!-- Joints 2 and 4 are not motorised -->
+    <jointToPort>0 1 -1 2 -1 3 4 5 6 7</jointToPort>
+    <portToJoint>0 1 3 5 6 7 8 9</portToJoint>
+    <Kinematics>
+      <nProbes>1</nProbes>
+      <nJoints>10</nJoints>
+      <!-- Angles in degrees, distances in mm -->
+      <jointNeutralPosition>0.0  -90.0  76.81   13.19   0.0   90.0  90.0   0.0  -90.0   90.0</jointNeutralPosition>
+      <jointOffsetMin>    -90.0 -117.0 -46.81  -16.81 -25.0  -90.0  85.0 -35.0 -110.0 -110.0</jointOffsetMin>
+      <jointOffsetMax>     90.0  -60.0 103.81   38.19  30.0  270.0 160.0  35.0  -50.0  290.0</jointOffsetMax>
+      <dependentJoint>        0      0     1       0      1      0     0     0      0      0</dependentJoint>
+      <DHParameters section="all">
+        <nSectionJoints>10</nSectionJoints>
+        <alphaAngle>-90.0   0.0   0.0    0.0 -90.0   90.0  90.0 -90.0  -90.0  90.0</alphaAngle>
+        <aDist>      45.0 274.0 131.47 354.0 104.31   0.0   0.0  35.0   41.80  0.0</aDist>
+        <dDist>      45.0   0.0   0.0    0.0   0.0  113.82  0.0 119.70   0.0  49.55</dDist>
+        <linearJoint>   0     0     0      0     0      0     0     0      0     0</linearJoint>
+      </DHParameters>
+    </Kinematics>
+    <ScanningBed>
+      <bedSize>630.0 1850.0 50.0</bedSize>
+      <bedPosition>631.312 -161.500 -49.371</bedPosition>
+    </ScanningBed>
+  </Robot>
+  <!-- Two arm robot, with vertical lift at back, side mounted configuration -->
+  <Robot version="3.3">
+    <Sensors>
+      <sensorArduinoId>A96H1VF3</sensorArduinoId>
+      <nTotalRawValues>18</nTotalRawValues>  <!-- Force and distance sensors -->
+      <SensorLocation location="Left probe" type="force">
+        <rawValueListIdx>0</rawValueListIdx>
+        <nRawValues>8</nRawValues>
+        <rawValueScale>0.0012210012</rawValueScale>  <!-- 5V / 4095 -->
+        <rawValueMin>0</rawValueMin>
+        <rawValueMax>4095</rawValueMax>
+        <componentNames>X Y Z</componentNames>
+        <componentWeights dir="X">0.014666212 -0.001432141  0.017490613 -0.010485655 -0.011276516 -0.024444139  0.037907184 -0.020232634</componentWeights>
+        <componentWeights dir="Y">0.035450671 -0.025582013 -0.025909954 -0.013258222 -0.008384044  0.022599214  0.012640229  0.003043147</componentWeights>
+        <componentWeights dir="Z">0.011140494 -0.030461855 -0.04271432  -0.0005104    0.011348763 -0.021943959 -0.002512199 -0.028186875</componentWeights>
+        <!-- <componentNames>Axial Lat. El.</componentNames>
+        <componentWeights dir="Axial">-0.011140494 0.030461855 0.04271432  0.0005104  -0.011348763  0.021943959  0.002512199  0.028186875</componentWeights>
+        <componentWeights dir="Lat."> -0.0263275   0.014191129 0.004422865 0.01247318  0.010328125  0.000969179 -0.026553667  0.009030015</componentWeights>
+        <componentWeights dir="El.">  -0.010918533 0.012686459 0.022799272 0.00145649 -0.001519479 -0.024712908  0.013273287 -0.012227279</componentWeights> -->
+        <offsets>0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0</offsets>
+      </SensorLocation>
+      <SensorLocation location="Right probe" type="force">
+        <rawValueListIdx>8</rawValueListIdx>
+        <nRawValues>8</nRawValues>
+        <rawValueScale>0.0012210012</rawValueScale>  <!-- 5V / 4095 -->
+        <rawValueMin>0</rawValueMin>
+        <rawValueMax>4095</rawValueMax>
+        <componentNames>X Y Z</componentNames>
+        <componentWeights dir="X">0.015717442   0.015952311  0.033487988 -0.034435749 -0.01700894  -0.013347296  0.024936791 -0.029908332</componentWeights>
+        <componentWeights dir="Y">0.016276973  -0.03181259  -0.000457515 -0.019155949 -0.039145813  0.021792084  0.017744445  0.04104534</componentWeights>
+        <componentWeights dir="Z">-0.010797409 -0.012658917 -0.025190324 -0.02537755  -0.011367914 -0.010262688 -0.014237444 -0.022498171</componentWeights>
+        <!-- <componentNames>Axial Lat. El.</componentNames>
+        <componentWeights dir="Axial">0.010797409 0.012658917  0.025190324  0.02537755  0.011367914  0.010262688  0.014237444  0.022498171</componentWeights>
+        <componentWeights dir="Lat.">-0.01680737  0.008331753 -0.017351634  0.028152898 0.029499326 -0.004436233 -0.022421392 -0.005850515</componentWeights>
+        <componentWeights dir="El."> -0.000293934 0.025091953  0.017832319 -0.008026815 0.011628986 -0.018459489  0.003778298 -0.037273524</componentWeights> -->
+        <offsets>0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0</offsets>
+      </SensorLocation>
+      <SensorLocation location="Left probe" type="distance">
+        <rawValueListIdx>16</rawValueListIdx>
+        <nRawValues>1</nRawValues>
+        <rawValueScale>1.0</rawValueScale>
+        <rawValueMin>0</rawValueMin>
+        <rawValueMax>255</rawValueMax>
+        <componentNames>Axial</componentNames>
+        <componentWeights dir="Axial">1.0</componentWeights>
+        <offsets>0.0</offsets>
+      </SensorLocation>
+      <SensorLocation location="Right probe" type="distance">
+        <rawValueListIdx>17</rawValueListIdx>
+        <nRawValues>1</nRawValues>
+        <rawValueScale>1.0</rawValueScale>
+        <rawValueMin>0</rawValueMin>
+        <rawValueMax>255</rawValueMax>
+        <componentNames>Axial</componentNames>
+        <componentWeights dir="Axial">1.0</componentWeights>
+        <offsets>0.0</offsets>
+      </SensorLocation>
+    </Sensors>
+    <Motors>
+      <motorArduinoId>3767850</motorArduinoId>
+      <nMotors>17</nMotors>
+      <!-- Motor1 is the gantry, 2-6 are left arm, 7-9 are left EE, 10-14 are right arm, 15-17 are right EE -->
+      <!--                     G1    LA2   LA3   LA4   LA5   LA6   LE7     LE8   LE9   RA10   RA11  RA12   RA13  RA14  RE15    RE16  RE17 -->
+      <stepsPerRevolution>  200.0  200.0 200.0 200.0 200.0 200.0  20.0    20.0  20.0  200.0  200.0 200.0  200.0 200.0  20.0    20.0  20.0</stepsPerRevolution>
+      <microstepping>         2.0    4.0   4.0   4.0   4.0   4.0   4.0     4.0   4.0    4.0    4.0   4.0    4.0   4.0   4.0     4.0   4.0</microstepping>
+      <internalGearRatio>     1.0    1.0   1.9   1.0   1.0   1.0 232.0   232.0 232.0    1.0    1.9   1.0    1.0   1.0 232.0   232.0 232.0</internalGearRatio>
+      <externalGearRatio>   214.4  135.0  50.0  58.0  58.0  50.0   6.25    7.5   6.67  135.0  50.0  58.0   58.0  50.0   6.25    7.5   6.67</externalGearRatio> <!-- 58/1 135/1 50/1 58/1 58/1 50/1 100/16 150/20 120/18 135/1 50/1 58/1 58/1 50/1 100/16 150/20 120/18 -->
+      <!-- Motor zero relative to kinematics zero, in degrees or mm -->
+      <homingPosition>        0.0   29.0  65.5  84.0 173.0  84.0  86.0  -138.0 180.0   32.6  -83.0 -99.0 -172.5  90.0  91.0  -139.0 180.0</homingPosition>
+      <homingSensor>            0      1     1     1     1     1     1       1     1      1      1     1      1     1     1       1     1</homingSensor>
+      <homingSequence>          0      3     3     3     2     1     1       1     1      3      3     3      2     1     1       1     1</homingSequence>
+      <!-- <homingSequence>          0      1     1     1     0     0     0       0     0      1      1     1      0     0     0       0     0</homingSequence> -->
+    </Motors>
+    <!-- Joint 11 is not a real joint; it is a repeat of joint 0 allowing the gantry joint to be modelled twice -->
+    <!-- Joints 1 and 12 are passive, Joints 3 and 14 are unmotorised dependent joints -->
+    <jointToPort>0 -1 1 -1 2 3 4 5 6 7 8 0 -1 9 -1 10 11 12 13 14 15 16</jointToPort>
+    <portToJoint>0 2 4 5 6 7 8 9 10 13 15 16 17 18 19 20 21</portToJoint>
+    <Kinematics>
+      <nProbes>2</nProbes>
+      <nJoints>22</nJoints>  <!-- Actually 21 joints, but the first joint is modelled twice for the two arms -->
+      <!-- Angles in degrees, distances in mm. Labels are left (L) and right (R); gantry (G), passive (P), arm (A), surface alignment (S) and orientation (O). -->
+      <!--                   LG    LP  LA1a   LA1b    LA2    LA3    LS1   LS2   LO1    LO2    LO3     RG    RP  RA1a   RA1b     RA2    RA3    RS1   RS2   RO1    RO2    RO3 -->
+      <jointNeutralPosition>0.0 135.0  13.33 -13.33  51.6 -121.1  -40.5  90.0   0.0  -90.0   65.0    0.0 135.0  13.33 -13.33  -53.2  127.2   -5.4  90.0   0.0  -90.0   66.4</jointNeutralPosition>
+      <jointOffsetMin>   -500.0  90.0 -18.0  -42.4  -92.0 -160.0 -170.0  84.0 -90.0 -138.0 -180.0 -500.0  90.0 -18.0  -42.6  -105.0 -104.0 -172.5  90.0 -90.0 -139.0 -180.0</jointOffsetMin>
+      <jointOffsetMax>    500.0 180.0  42.4   18.0   68.0  135.0  173.0 205.0  86.0  -40.0  180.0  500.0 180.0  42.6   18.0    58.0  158.0  170.0 205.0  91.0  -40.0  180.0</jointOffsetMax>
+      <dependentJoint>        0     0     0      1      0      0      0     0     0      0      0      0     0     0      1       0      0      0     0     0      0      0</dependentJoint>
+      <DHParameters section="leftArm">
+        <nSectionJoints>11</nSectionJoints>
+        <alphaAngle>90.0  90.0   0.0 90.0   0.0   0.0 90.0 90.0 -90.0 -90.0 90.0</alphaAngle>
+        <aDist>      0.0   0.0 155.0 75.0 180.0 100.0  0.0  0.0  35.0  55.1  0.0</aDist>
+        <dDist>      0.0 400.0 116.0  0.0 -24.0  24.0 86.0  0.0 150.5   0.0 58.65</dDist>
+        <thetaAngle> 0.0   0.0   0.0  0.0   0.0   0.0  0.0  0.0   0.0   0.0  0.0</thetaAngle>
+        <linearJoint>  1     0     0    0     0     0    0    0     0     0    0</linearJoint>
+        <baseAdjustParams>0.0 -50.0 0.0 90.0 180.0 0.0</baseAdjustParams>
+      </DHParameters>
+      <DHParameters section="rightArm">
+        <nSectionJoints>11</nSectionJoints>
+        <alphaAngle>90.0  90.0    0.0 90.0   0.0   0.0 90.0 90.0 -90.0 -90.0 90.0</alphaAngle>
+        <aDist>      0.0   0.0  155.0 75.0 180.0 100.0  0.0  0.0  35.0  55.1  0.0</aDist>
+        <dDist>      0.0 400.0 -166.0  0.0 -24.0  24.0 86.0  0.0 150.5   0.0 58.65</dDist>
+        <thetaAngle> 0.0   0.0    0.0  0.0   0.0   0.0  0.0  0.0   0.0   0.0  0.0</thetaAngle>
+        <linearJoint>  1     0      0    0     0     0    0    0     0     0    0</linearJoint>
+        <baseAdjustParams>0.0 50.0 0.0 90.0 180.0 0.0</baseAdjustParams>
+      </DHParameters>
+    </Kinematics>
+    <ScanningBed>
+      <bedSize>630.0 1850.0 50.0</bedSize>
+      <bedPosition>281.853 -244.812 2.347</bedPosition>
+    </ScanningBed>
+  </Robot>
+  <!-- Two arm robot with vertical lift at back, gantry configuration -->
+  <Robot version="3.4">
+    <Sensors>
+      <sensorArduinoId>A96H1VF3</sensorArduinoId>
+      <nTotalRawValues>18</nTotalRawValues>  <!-- Force and distance sensors -->
+      <SensorLocation location="Left probe" type="force">
+        <rawValueListIdx>0</rawValueListIdx>
+        <nRawValues>8</nRawValues>
+        <rawValueScale>0.0012210012</rawValueScale>  <!-- 5V / 4095 -->
+        <rawValueMin>0</rawValueMin>
+        <rawValueMax>4095</rawValueMax>
+        <componentNames>X Y Z</componentNames>
+        <componentWeights dir="X">0.014666212 -0.001432141  0.017490613 -0.010485655 -0.011276516 -0.024444139  0.037907184 -0.020232634</componentWeights>
+        <componentWeights dir="Y">0.035450671 -0.025582013 -0.025909954 -0.013258222 -0.008384044  0.022599214  0.012640229  0.003043147</componentWeights>
+        <componentWeights dir="Z">0.011140494 -0.030461855 -0.04271432  -0.0005104    0.011348763 -0.021943959 -0.002512199 -0.028186875</componentWeights>
+        <!-- <componentNames>Axial Lat. El.</componentNames>
+        <componentWeights dir="Axial">-0.011140494 0.030461855 0.04271432  0.0005104  -0.011348763  0.021943959  0.002512199  0.028186875</componentWeights>
+        <componentWeights dir="Lat."> -0.0263275   0.014191129 0.004422865 0.01247318  0.010328125  0.000969179 -0.026553667  0.009030015</componentWeights>
+        <componentWeights dir="El.">  -0.010918533 0.012686459 0.022799272 0.00145649 -0.001519479 -0.024712908  0.013273287 -0.012227279</componentWeights> -->
+        <offsets>0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0</offsets>
+      </SensorLocation>
+      <SensorLocation location="Right probe" type="force">
+        <rawValueListIdx>8</rawValueListIdx>
+        <nRawValues>8</nRawValues>
+        <rawValueScale>0.0012210012</rawValueScale>  <!-- 5V / 4095 -->
+        <rawValueMin>0</rawValueMin>
+        <rawValueMax>4095</rawValueMax>
+        <componentNames>X Y Z</componentNames>
+        <componentWeights dir="X">0.015717442   0.015952311  0.033487988 -0.034435749 -0.01700894  -0.013347296  0.024936791 -0.029908332</componentWeights>
+        <componentWeights dir="Y">0.016276973  -0.03181259  -0.000457515 -0.019155949 -0.039145813  0.021792084  0.017744445  0.04104534</componentWeights>
+        <componentWeights dir="Z">-0.010797409 -0.012658917 -0.025190324 -0.02537755  -0.011367914 -0.010262688 -0.014237444 -0.022498171</componentWeights>
+        <!-- <componentNames>Axial Lat. El.</componentNames>
+        <componentWeights dir="Axial">0.010797409 0.012658917  0.025190324  0.02537755  0.011367914  0.010262688  0.014237444  0.022498171</componentWeights>
+        <componentWeights dir="Lat.">-0.01680737  0.008331753 -0.017351634  0.028152898 0.029499326 -0.004436233 -0.022421392 -0.005850515</componentWeights>
+        <componentWeights dir="El."> -0.000293934 0.025091953  0.017832319 -0.008026815 0.011628986 -0.018459489  0.003778298 -0.037273524</componentWeights> -->
+        <offsets>0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0</offsets>
+      </SensorLocation>
+      <SensorLocation location="Left probe" type="distance">
+        <rawValueListIdx>16</rawValueListIdx>
+        <nRawValues>1</nRawValues>
+        <rawValueScale>1.0</rawValueScale>
+        <rawValueMin>0</rawValueMin>
+        <rawValueMax>255</rawValueMax>
+        <componentNames>Axial</componentNames>
+        <componentWeights dir="Axial">1.0</componentWeights>
+        <offsets>0.0</offsets>
+      </SensorLocation>
+      <SensorLocation location="Right probe" type="distance">
+        <rawValueListIdx>17</rawValueListIdx>
+        <nRawValues>1</nRawValues>
+        <rawValueScale>1.0</rawValueScale>
+        <rawValueMin>0</rawValueMin>
+        <rawValueMax>255</rawValueMax>
+        <componentNames>Axial</componentNames>
+        <componentWeights dir="Axial">1.0</componentWeights>
+        <offsets>0.0</offsets>
+      </SensorLocation>
+    </Sensors>
+    <Motors>
+      <motorArduinoId>3767850</motorArduinoId>
+      <nMotors>17</nMotors>
+      <!-- Motor1 is the gantry, 2-6 are left arm, 7-9 are left EE, 10-14 are right arm, 15-17 are right EE -->
+      <!--                     G1    RA2   RA3   RA4   RA5   RA6   RE7    RE8   RE9   LA10   LA11  LA12   LA13  LA14  LE15   LE16  LE17 -->
+      <stepsPerRevolution>  200.0  200.0 200.0 200.0 200.0 200.0  20.0   20.0  20.0  200.0  200.0 200.0  200.0 200.0  20.0   20.0  20.0</stepsPerRevolution>
+      <microstepping>         2.0    4.0   4.0   4.0   4.0   4.0   4.0    4.0   4.0    4.0    4.0   4.0    4.0   4.0   4.0    4.0   4.0</microstepping>
+      <internalGearRatio>     1.0    1.0   1.9   1.0   1.0   1.0 232.0  232.0 232.0    1.0    1.9   1.0    1.0   1.0 232.0  232.0 232.0</internalGearRatio>
+      <externalGearRatio>   214.4  135.0  50.0  58.0  58.0  50.0   6.25   7.5   6.67  135.0  50.0  58.0   58.0  50.0   6.25   7.5   6.67</externalGearRatio> <!-- 58/1 135/1 50/1 58/1 58/1 50/1 100/16 150/20 120/18 135/1 50/1 58/1 58/1 50/1 100/16 150/20 120/18 -->
+      <!-- Motor zero relative to kinematics zero, in degrees or mm -->
+      <homingPosition>        0.0   27.0  65.5  69.0 171.0  84.0  86.0 -131.0 180.0   30.6  -83.0 -99.0 -172.5  90.0  91.0 -137.0 180.0</homingPosition>
+      <homingSensor>            0      1     1     1     1     1     1      1     1      1      1     1      1     1     1      1     1</homingSensor>
+      <homingSequence>          0      3     3     3     2     1     1      1     1      3      3     3      2     1     1      1     1</homingSequence>
+      <!-- <homingSequence>          0      1     1     1     0     0     0       0     0      1      1     1      0     0     0       0     0</homingSequence> -->
+    </Motors>
+    <!-- Joint 11 is not a real joint; it is a repeat of joint 0 allowing the gantry joint to be modelled twice -->
+    <!-- Joints 1 and 12 are passive, Joints 3 and 14 are unmotorised dependent joints -->
+    <jointToPort>0 -1 1 -1 2 3 4 5 6 7 8 0 -1 9 -1 10 11 12 13 14 15 16</jointToPort>
+    <portToJoint>0 2 4 5 6 7 8 9 10 13 15 16 17 18 19 20 21</portToJoint>
+    <Kinematics>
+      <nProbes>2</nProbes>
+      <nJoints>22</nJoints>  <!-- Actually 21 joints, but the first joint is modelled twice for the two arms -->
+      <!-- Angles in degrees, distances in mm. Labels are left (L) and right (R); gantry (G), passive (P), arm (A), surface alignment (S) and orientation (O). -->
+      <!--                   LG    LP  LA1a   LA1b   LA2    LA3    LS1   LS2   LO1    LO2    LO3     RG    RP  RA1a   RA1b    RA2    RA3    RS1   RS2   RO1    RO2    RO3 -->
+      <jointNeutralPosition>0.0  90.0 13.33 -13.33  15.0  -65.0  -28.0  90.0   0.0  -90.0  -17.0    0.0  90.0 13.33 -13.33  -15.0   65.0   28.0  90.0   0.0  -90.0   17.0</jointNeutralPosition>
+      <jointOffsetMin>   -500.0  45.0 -18.0 -42.4  -92.0 -160.0 -170.0  84.0 -90.0 -138.0 -180.0 -500.0  45.0 -18.0  -42.6 -105.0 -104.0 -172.5  90.0 -90.0 -139.0 -180.0</jointOffsetMin>
+      <jointOffsetMax>    500.0 180.0  42.4  18.0   68.0  135.0  173.0 205.0  86.0  -40.0  180.0  500.0 180.0  42.6   18.0   58.0  158.0  170.0 205.0  91.0  -40.0  180.0</jointOffsetMax>
+      <dependentJoint>        0     0     0     1      0      0      0     0     0      0      0      0     0     0      1      0      0      0     0     0      0      0</dependentJoint>
+      <DHParameters section="leftArm">
+        <nSectionJoints>11</nSectionJoints>
+        <alphaAngle>90.0  90.0   0.0 90.0   0.0   0.0 90.0 90.0 -90.0 -90.0 90.0</alphaAngle>
+        <aDist>      0.0   0.0 155.0 75.0 180.0 100.0  0.0  0.0  35.0  55.1  0.0</aDist>
+        <dDist>      0.0 400.0 116.0  0.0 -24.0  24.0 86.0  0.0 150.5   0.0 58.65</dDist>
+        <thetaAngle> 0.0   0.0   0.0  0.0   0.0   0.0  0.0  0.0   0.0   0.0  0.0</thetaAngle>
+        <linearJoint>  1     0     0    0     0     0    0    0     0     0    0</linearJoint>
+        <baseAdjustParams>-100.0 0.0 0.0 90.0 180.0 0.0</baseAdjustParams>
+      </DHParameters>
+      <DHParameters section="rightArm">
+        <nSectionJoints>11</nSectionJoints>
+        <alphaAngle>90.0  90.0    0.0 90.0   0.0   0.0 90.0 90.0 -90.0 -90.0 90.0</alphaAngle>
+        <aDist>      0.0   0.0  155.0 75.0 180.0 100.0  0.0  0.0  35.0  55.1  0.0</aDist>
+        <dDist>      0.0 400.0 -166.0  0.0 -24.0  24.0 86.0  0.0 150.5   0.0 58.65</dDist>
+        <thetaAngle> 0.0   0.0    0.0  0.0   0.0   0.0  0.0  0.0   0.0   0.0  0.0</thetaAngle>
+        <linearJoint>  1     0      0    0     0     0    0    0     0     0    0</linearJoint>
+        <baseAdjustParams>187.0 0.0 0.0 90.0 180.0 0.0</baseAdjustParams>
+      </DHParameters>
+    </Kinematics>
+    <ScanningBed>
+      <bedSize>630.0 1850.0 50.0</bedSize>
+      <bedPosition>68.500 -506.716 2.347</bedPosition>
+    </ScanningBed>
+  </Robot>
+</Robots>
