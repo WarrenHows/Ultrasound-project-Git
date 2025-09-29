@@ -16,3 +16,6 @@ There are two URDF files present, "TwoArm" and "TwoArm_col". "TwoArm" when simul
 The text file present "TwoArmCommented" contains comments in the URDF file for a breakdown of how the URDF is written.
 The file "post_processing_two_arm_R1" contains MATLAB code which when run after training has been completed, plots and analyses the training results.
 
+## Useful Resources for RL 
+Multi-Agent and PPO: https://huggingface.co/learn/deep-rl-course/en/unitbonus3/generalisation
+Reinforcement Learning beginning to end: Open AI Spinning Up and Hugging Face Reinforcement Learning Tutorial 
