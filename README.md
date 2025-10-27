@@ -19,3 +19,6 @@ The file "post_processing_two_arm_R1" contains MATLAB code which when run after 
 ## Useful Resources for RL 
 Multi-Agent and PPO: https://huggingface.co/learn/deep-rl-course/en/unitbonus3/generalisation
 Reinforcement Learning beginning to end: Open AI Spinning Up and Hugging Face Reinforcement Learning Tutorial 
+
+## To work on
+The code works for training the 1 arm robot however the 2 arm robot training does not seem to work and hits peak performance roughly after 3 million timesteps of training. Training is incredibly long and computationally taxing. A new reward function needs to be devised for the 2 arm robot to succesfully be trained as the current one does not work for this purpose. The code also is believed to have inefficiencies such as using lists instead of numpy arrays and the use of loops instead of vectorisation and etc. Also the code can be simplified in many ways which may remove unknown problems in the code. For example all normalisation is done manually using normalise functions however using scikit learn functions such as standard scaler as an alternative could make the code more understandable and address any mistakes that may have been made when I implmented all of these functions naively.  
